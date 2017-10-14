@@ -1,15 +1,14 @@
 import React, { Component } from 'react';
 import { Jumbotron } from 'react-bootstrap';
 
-export default class Titre extends Component {
+export default class Footer extends Component {
 
 	render() {
 
 		return (
 			<div>
 				<Jumbotron>
-					<h1>Hackquaculture Marine</h1>
-					<p>Trouvez votre bonheur</p>
+					<small> On est super </small>
 				</Jumbotron>
 
 			</div>
