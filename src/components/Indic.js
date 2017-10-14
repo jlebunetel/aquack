@@ -16,24 +16,26 @@ export default class Indic extends Component {
 						<Col md="4">
 							<h1>Milieu Physique</h1>
 							<ToggleButtonGroup name="physic" type="checkbox">
-								<ToggleButton value={1} bsStyle="primary">Bathymétrie</ToggleButton>
-								<ToggleButton value={2} bsStyle="primary">Courants</ToggleButton>
-								<ToggleButton value={3} bsStyle="primary">Hauteur de vagues</ToggleButton>
+								<ToggleButton name="bathy" value={1} bsStyle="primary">Bathymétrie</ToggleButton>
+								<ToggleButton name="courants" value={2} bsStyle="primary">Courants</ToggleButton>
+								<ToggleButton name="houle" value={3} bsStyle="primary">Houle</ToggleButton>
+								<ToggleButton name="hauteur" value={4} bsStyle="primary">Hauteur d eau</ToggleButton>
+								<ToggleButton name="vents" value={5} bsStyle="primary">Vents</ToggleButton>
+								<ToggleButton name="fonds" value={6} bsStyle="primary">Nature des fonds</ToggleButton>
 							</ToggleButtonGroup>
 						</Col>
 						<Col md="4">
 							<h1>Milieu Naturel</h1>
 							<ToggleButtonGroup name="natural" type="checkbox">
-								<ToggleButton value={1}>Espaces sensibles</ToggleButton>
-								<ToggleButton value={2}>Qualité du milieu</ToggleButton>
+								<ToggleButton name="especes" bsStyle="success" value={1}>Espèces spécifiques</ToggleButton>
+								<ToggleButton name="milieu" bsStyle="success" value={2}>Qualité du milieu</ToggleButton>
 							</ToggleButtonGroup>
 						</Col>
 						<Col md="4">
 							<h1>Usages</h1>
-							<ToggleButtonGroup name="physic" type="checkbox">
-								<ToggleButton value={1} bsStyle="warning">Zones militaires</ToggleButton>
-								<ToggleButton value={2} bsStyle="warning">Pêche</ToggleButton>
-								<ToggleButton value={3} bsStyle="warning">Trafic maritime</ToggleButton>
+							<ToggleButtonGroup name="usages" type="checkbox">
+								<ToggleButton name="peche" value={1} bsStyle="warning">Cantonnements de pêche</ToggleButton>
+								<ToggleButton name="trafic" value={2} bsStyle="warning">Trafic maritime</ToggleButton>
 							</ToggleButtonGroup>
 						</Col>
 					</Grid>
