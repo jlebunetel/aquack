@@ -10,7 +10,6 @@ class App extends Component {
       <div className="App">
         <Titre />
         <Culture />
-        <br/>
         <Footer />
       </div>
     );

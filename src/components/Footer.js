@@ -8,7 +8,7 @@ export default class Footer extends Component {
 		return (
 			<div>
 				<Jumbotron>
-					<small> On est super </small>
+					<small> Trop disruptif.. </small>
 				</Jumbotron>
 
 			</div>

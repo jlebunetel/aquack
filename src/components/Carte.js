@@ -19,7 +19,7 @@ export default class Carte extends Component {
         opacity: 1,
         source: new ol.source.XYZ({ 
           url:'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-          attributions: "<h6>OSIRISC, Labex Mer / Fondation de France, 2017</h6>",
+          attributions: "<h6>Océan Hackathon 2017, Brest : Projet Aquaculture Marine</h6>",
         })
     });
 

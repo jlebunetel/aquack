@@ -3,3 +3,8 @@ body {
   padding-right: 14%;
   font-family: sans-serif;
 }
+
+.col-centered{
+    float: none;
+    margin: 0 auto;
+}

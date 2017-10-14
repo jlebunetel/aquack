@@ -10,9 +10,9 @@ export default class Indic extends Component {
 		return (
 			<div>
 				<Jumbotron>
-					<h1>Ajustez les indicateurs</h1>
+					<h1>{this.props.fish}</h1>
 				</Jumbotron>
-				<br/>
+				
 				<Carte />
 			</div>
 		)
