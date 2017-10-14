@@ -7,9 +7,10 @@ export default class Titre extends Component {
 
 		return (
 			<div>
-				<Jumbotron>
-					<h1>Hackquaculture Marine</h1>
-					<p>Trouvez votre bonheur</p>
+				<Jumbotron
+				bsStyle="primary">
+					<h1>Décid'Aqua</h1>
+					<p>Aide à la décision pour identifier les zones propices à l'aquaculture marine</p>
 				</Jumbotron>
 
 			</div>
