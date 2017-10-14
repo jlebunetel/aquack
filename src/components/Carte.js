@@ -1,39 +1,81 @@
 import React, { Component } from 'react';
 import ol from "openlayers";
+import carroyage from './carr.js';
 
 export default class Carte extends Component {
 
   componentDidMount() {
     let styleDefault = new ol.style.Style({
-        stroke: new ol.style.Stroke({
-          color: '#008CBA',
-          width: 0
-        }),
-        fill: new ol.style.Fill({
-          color: '#008CBA'
-        })
-      });
+		stroke: new ol.style.Stroke({
+			color: '#008CBA',
+			width: 0
+		}),
+		fill: new ol.style.Fill({
+			color: '#008CBA'
+		})
+	});
 
     let base = new ol.layer.Tile({ 
         name: 'base',
         opacity: 1,
-        source: new ol.source.XYZ({ 
-          url:'http://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}',
-          attributions: "<h6>Océan Hackathon 2017, Brest : Projet Aquaculture Marine</h6>",
+        source: new ol.source.TileWMS({
+            url: 'http://services.data.shom.fr/wbu1tn9qmq9n6by8ijsy69sk/wms/r',
+            params: {'LAYERS': 'RASTER_MARINE_3857_WMSR', 'TILED': true},
+            serverType: 'geoserver'
         })
+    });
+    let vectorSource = new ol.source.Vector({
+    	features: (new ol.format.GeoJSON()).readFeatures(carroyage)
+    });
+    
+    let styles = {
+    	0: new ol.style.Style({
+    		stroke: new ol.style.Stroke({
+    			width: 0
+    		}),
+    		fill: new ol.style.Fill({
+    			color: "#FF0000"
+    		})
+    	}),
+    	1: new ol.style.Style({
+    		stroke: new ol.style.Stroke({
+    			width: 0
+    		}),
+    		fill: new ol.style.Fill({
+    			color: "#FFFF00"
+    		})
+    	}),
+    	2: new ol.style.Style({
+    		stroke: new ol.style.Stroke({
+    			width: 0
+    		}),
+    		fill: new ol.style.Fill({
+    			color: "#00FF00"
+    		})
+    	})
+    };
+    
+    let styleFunction = function(feature){
+    	return styles[feature.get("Z_M")];
+    }
+    let carr = new ol.layer.Vector({
+    	name: 'carr',
+    	opacity: 0.5,
+    	source: vectorSource,
+    	style: styleFunction
     });
 
     let map = new ol.Map({
       target: this.refs.map,
-      layers: [base],
+      layers: [base, carr],
       controls: ol.control.defaults().extend([
         new ol.control.ScaleLine()
       ]),
       view: new ol.View({
-        center: ol.proj.fromLonLat([-1, 49]),
-        zoom: 6,
-        minZoom: 5,
-        maxZoom: 9
+        center: ol.proj.fromLonLat([-4.2, 48.3]),
+        zoom: 9,
+        minZoom: 9,
+        maxZoom: 18
       })
     });
  
@@ -41,7 +83,7 @@ export default class Carte extends Component {
 
   render() {
     let style = {
-      height: '350px'
+      height: '500px'
     };
 
     return (
