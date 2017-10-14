@@ -9,7 +9,16 @@ export default class Culture extends Component {
 		super(props);
 		this.addFish = this.addFish.bind(this);
 		this.state = {
-			fish: []
+			bathy: [],
+			courants: [],
+			houle: [],
+			hauteur: [],
+			vents: [],
+			fond: [],
+			especes: [],
+			milieu: [],
+			peche: [],
+			trafic: [],
 		};
 
 	}
@@ -17,8 +26,7 @@ export default class Culture extends Component {
 	addFish(e) {
 		let fish = e.target.value;
 		let fishState = this.state.fish;
-
-		if(fishState.indexOf(fish) === -1) {
+		if(fishState.includes(fish)) {
 			fishState.splice(fishState.indexOf(fish))
 		} else {
 			this.setState({
@@ -37,6 +45,7 @@ export default class Culture extends Component {
 					<Col className="col-md-3 col-md-offset-1">
 						<Button
 						value= "poisson"
+						bsStyle="primary"
 						onClick={this.addFish}
 						>
 							<Image 
