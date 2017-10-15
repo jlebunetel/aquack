@@ -57,6 +57,7 @@ export default class Carte extends Component {
     
     let styleFunction = function(feature){
     	let exclusion = feature.get("Z_M") * feature.get("z_vase");
+    	let base = feature.get("")
     	let total = 0;
     	if(exclusion == 0) {
     		total = 0;
@@ -80,8 +81,8 @@ export default class Carte extends Component {
         new ol.control.ScaleLine()
       ]),
       view: new ol.View({
-        center: ol.proj.fromLonLat([-4.6, 48.3]),
-        zoom: 11,
+        center: ol.proj.fromLonLat([-4.9, 48.45]),
+        zoom: 10.5,
         minZoom: 9,
         maxZoom: 18
       })
