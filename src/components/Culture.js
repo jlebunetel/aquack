@@ -90,7 +90,7 @@ export default class Culture extends Component {
 						onClick={this.evalFish}
 						>
 							<Image 
-							src="./fish.png"
+							src="./moules.png"
 							circle
 							responsive />
 						</Button>
@@ -102,7 +102,7 @@ export default class Culture extends Component {
 						onClick={this.evalFish}
 						>
 							<Image 
-							src="./fish.png"
+							src="./algue.png"
 							circle
 							responsive />
 						</Button>

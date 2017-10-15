@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Jumbotron } from 'react-bootstrap';
+import { Jumbotron, Image } from 'react-bootstrap';
 
 export default class Titre extends Component {
 
@@ -9,7 +9,9 @@ export default class Titre extends Component {
 			<div>
 				<Jumbotron
 				bsStyle="primary">
-					<h1>Décid'Aqua</h1>
+					<Image 
+					src="./logo.png"
+					/>
 					<p>Aide à la décision pour identifier les zones propices à l'aquaculture marine</p>
 				</Jumbotron>
 
