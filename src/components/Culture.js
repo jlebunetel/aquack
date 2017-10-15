@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Col, ToggleButton, ToggleButtonGroup, Image } from 'react-bootstrap';
+import { Button, Col, Image } from 'react-bootstrap';
 
 import Indic from "./Indic";
 import IndicPoisson from "./IndicPoisson";
@@ -83,6 +83,8 @@ export default class Culture extends Component {
             </div>
         );
 	}
+
+
 
 
 	render() {
