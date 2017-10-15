@@ -56,7 +56,16 @@ export default class Carte extends Component {
     };
     
     let styleFunction = function(feature){
-    	return styles[feature.get("Z_M")];
+    	let exclusion = feature.get("Z_M") * feature.get("z_vase");
+    	let base = feature.get("")
+    	let total = 0;
+    	if(exclusion == 0) {
+    		total = 0;
+    	}
+    	else {
+    		total = 2;
+    	}
+    	return styles[total];
     }
     let carr = new ol.layer.Vector({
     	name: 'carr',
@@ -72,8 +81,8 @@ export default class Carte extends Component {
         new ol.control.ScaleLine()
       ]),
       view: new ol.View({
-        center: ol.proj.fromLonLat([-4.2, 48.3]),
-        zoom: 9,
+        center: ol.proj.fromLonLat([-4.9, 48.45]),
+        zoom: 10.5,
         minZoom: 9,
         maxZoom: 18
       })
