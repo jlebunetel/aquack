@@ -17,19 +17,45 @@ export default class Indic extends Component {
 			milieu: false,
 			peche: false,
 			trafic: false,
+			indic: []
 		}
 	}
 
-	altIndic() {
-		console.log("prout");
+
+	componentDidUpdate() {
+		const indicPoisson = [1,2,3,6,7,8,9,10];
+		const indicHuitre = [1,2,4,6,7,8,9,10];
+		const indicHuitrePoisson = [1,2,3,4,6,7,8,9,10];
+		const indicAlgue = [1,2,3,4,5,6,7,8,9,10];
+		let indic;
+
+		let propsFish = this.props.fish;
+		console.log(propsFish);
+
+		if (propsFish.includes("algue")) {
+			indic = indicAlgue;
+		} else if (propsFish.includes("huitre")){
+			if (propsFish.includes("poisson")){
+				indic = indicHuitrePoisson;
+			} else {
+				indic = indicHuitre;
+			}
+		} else if (propsFish.includes("poisson")){
+			indic = indicPoisson;
+		} else {
+			indic = [];
+		}
+		this.setState = {
+			indic: indic,
+		};
+		console.log(this.state.indic)
 	}
 
+	altIndic() {
+		console.log("...");
+	}
 
 	render() {
-
-		const poisson = [2,4,6];
-		const huitre = [];
-		const algue = [];
 
 		let bathy = this.state.bathy;
 		let courants = this.state.courants;
@@ -44,46 +70,23 @@ export default class Indic extends Component {
 
 		return (
 			<div>
-				<Jumbotron>
-					<h1>{this.props.fish}</h1>
-				</Jumbotron>
+				<h2 className="text-center"><span className="text-primary">Milieu Physique</span> . <span className="text-success">Milieu Naturel</span> . <span className="text-warning">Usages</span></h2>
+				<ToggleButtonGroup name="physic" type="checkbox" bsStyle="small" defaultValue={this.state.indic}>
 
-				<div>
-					<Grid>
-						<Col md="4">
-							<h1>Milieu Physique</h1>
-							<ToggleButtonGroup name="physic" type="checkbox" defaultValue={poisson}>
-								<ToggleButton checked = {bathy} name="bathy" value={1} bsStyle="primary" onClick={ this.altIndic } >Bathymétrie</ToggleButton>
-								<ToggleButton checked = {bathy} name="courants" value={2} bsStyle="primary">Courants</ToggleButton>
-								<ToggleButton name="houle" value={3} bsStyle="primary">Houle</ToggleButton>
-								<ToggleButton name="hauteur" value={4} bsStyle="primary">Hauteur d eau</ToggleButton>
-								<ToggleButton name="vents" value={5} bsStyle="primary">Vents</ToggleButton>
-								<ToggleButton name="fonds" value={6} bsStyle="primary">Nature des fonds</ToggleButton>
-							</ToggleButtonGroup>
-						</Col>
-						<Col md="4">
-							<h1>Milieu Naturel</h1>
-							<ToggleButtonGroup name="natural" type="checkbox">
-								<ToggleButton name="especes" bsStyle="success" value={7}>Espèces spécifiques</ToggleButton>
-								<ToggleButton name="milieu" bsStyle="success" value={8}>Qualité du milieu</ToggleButton>
-							</ToggleButtonGroup>
-						</Col>
-						<Col md="4">
-							<h1>Usages</h1>
-							<ToggleButtonGroup name="usages" type="checkbox">
-								<ToggleButton name="peche" value={9} bsStyle="warning">Cantonnements de pêche</ToggleButton>
-								<ToggleButton name="trafic" value={10} bsStyle="warning">Trafic maritime</ToggleButton>
-							</ToggleButtonGroup>
-						</Col>
-					</Grid>
-				</div>
-				<div>
-					<Grid>
-						<Col md="12">
-							<br />
-						</Col>
-					</Grid>
-				</div>
+					<ToggleButton checked = {bathy} name="bathy" value={1} bsSize="small" bsStyle="primary" onClick={ this.altIndic } >Bathymétrie</ToggleButton>
+					<ToggleButton checked = {courants} name="courants" value={2} bsSize="small" bsStyle="primary">Courants</ToggleButton>
+					<ToggleButton checked = {houle} name="houle" value={3} bsSize="small" bsStyle="primary">Houle</ToggleButton>
+					<ToggleButton checked = {hauteur} name="hauteur" value={4} bsSize="small" bsStyle="primary">Hauteur d eau</ToggleButton>
+					<ToggleButton checked = {vents} name="vents" value={5} bsSize="small" bsStyle="primary">Vents</ToggleButton>
+					<ToggleButton checked = {fonds} name="fonds" value={6} bsSize="small" bsStyle="primary">Nature des fonds</ToggleButton>
+					<ToggleButton checked = {especes} name="especes" bsSize="small" bsStyle="success" value={7}>Espèces spécifiques</ToggleButton>
+					<ToggleButton checked = {milieu} name="milieu" bsSize="small" bsStyle="success" value={8}>Qualité du milieu</ToggleButton>
+					<ToggleButton checked = {peche} name="peche" value={9} bsSize="small" bsStyle="warning">Cantonnements de pêche</ToggleButton>
+					<ToggleButton checked = {trafic} name="trafic" value={10} bsSize="small" bsStyle="warning">Trafic maritime</ToggleButton>
+
+				</ToggleButtonGroup>
+
+				<br/>
 
 				<Carte 
 				fish = {this.props.fish}/>
